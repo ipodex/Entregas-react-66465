@@ -1,0 +1,12 @@
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+    margin-block: 50px; 
+    margin-left: 125px;
+    gap: 20px;
+    
+    
+    
+}
