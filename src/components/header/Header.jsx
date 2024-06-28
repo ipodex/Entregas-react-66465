@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,18 +7,19 @@ import iconoLogo from '../../assets/icono.png';
 import cartIcon from '../../assets/cart-icon.png';
 import './header.css';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../CartContext'; 
 
-export const Header = () => {
-  const [cartCount, setCartCount] = useState(0); 
+const Header = ({ toggleCart }) => { 
+  const { cartCount } = useContext(CartContext); 
 
   return (
-    <div> 
+    <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home" className="d-flex align-items-center">
             <img
               alt="Logo"
-              src={iconoLogo} 
+              src={iconoLogo}
               width="30"
               height="30"
               className="d-inline-block align-top me-2"
@@ -28,11 +29,11 @@ export const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-            <Link to="/about" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">Home</Link>
               <Link to="/contact" className="nav-link">Contact</Link>
-              <Link to="/cart" className="nav-link d-flex align-items-center">
+              <Link to="/ShoppingCart" className="nav-link d-flex align-items-center" onClick={toggleCart}>
                 <img
-                  src={cartIcon} 
+                  src={cartIcon}
                   alt="Carrito"
                   style={{ width: '24px', height: '24px', marginRight: '5px' }}
                 />
@@ -47,4 +48,3 @@ export const Header = () => {
 }
 
 export default Header;
-
